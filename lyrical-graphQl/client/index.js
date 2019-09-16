@@ -1,8 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AppoloClient from 'apollo-client';
+import {AppoloProvider} from 'react-apollo';
+
+const client = new AppoloClient({});
 
 const Root = () => {
-  return <div>Lyrical</div>
+  return (
+    <AppoloProvider client={client}>
+      <div>Lyrical</div>
+    </AppoloProvider>
+  )
 };
 
 ReactDOM.render(

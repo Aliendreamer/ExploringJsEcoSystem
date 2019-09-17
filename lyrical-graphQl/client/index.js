@@ -1,19 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppoloClient from 'apollo-client';
-import {AppoloProvider} from 'react-apollo';
 
-const client = new AppoloClient({});
+import { ApolloClient } from 'apollo-client'
+import { ApolloProvider } from 'react-apollo'
+
+import {Router,Route,hashHistory,IndexRoute} from 'react-router';
+import SongList from './components/SongList';
+import App from './components/App';
+import SongCreate from './components/SongCreate';
+import SongDetails from './components/SongDetails';
+
+import  './styles/style.css';
+
+const client = new ApolloClient({})
+
 
 const Root = () => {
   return (
-    <AppoloProvider client={client}>
-      <div>Lyrical</div>
-    </AppoloProvider>
-  )
+     <ApolloProvider client={client}>
+      <Router history={hashHistory}>
+      <Route path="/" component={App}>
+      <IndexRoute component={SongList}/>
+      <Route path="songs/create" component={SongCreate}/>
+      <Route path="songs/:id" component={SongDetails}/>
+      </Route>
+      </Router>
+     </ApolloProvider>
+  );
 };
-
 ReactDOM.render(
-  <Root />,
+ <Root />,
   document.querySelector('#root')
 );

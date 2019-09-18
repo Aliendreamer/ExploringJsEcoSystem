@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
 import gql from 'graphql-tag';
-import graphql from 'react-apollo';
-import Link from 'react-router';
+import {graphql} from 'react-apollo';
+import {Link} from 'react-router';
 import LyricCreate from './LyricsCreate';
+import LyricList from './LyricList';
 
 class SongDetails extends Component{
    
@@ -16,9 +17,11 @@ class SongDetails extends Component{
         }
         return(
             <div>
-                <Link to="/songs">back</Link>
+                <Link to="/">back</Link>
                 <h3>Song Details</h3>
                 <h5>{song.title}</h5>
+                <LyricList lyrics={song.lyrics}/>
+                <LyricCreate songId={this.props.params.id}/>
             </div>
         );
     }
@@ -27,7 +30,12 @@ class SongDetails extends Component{
 const query= gql `query SongQuery($id:ID!){
     song(id:$id){
       id,
-      title
+      title,
+      lyrics{
+          id,
+          content,
+          likes
+      }
     }
   }`
 export default graphql(query,{

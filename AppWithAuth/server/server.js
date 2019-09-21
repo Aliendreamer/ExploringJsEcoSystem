@@ -12,7 +12,7 @@ const schema = require('./schema/schema');
 const app = express();
 
 // Replace with your mongoLab URI
-const MONGO_URI = '';
+const MONGO_URI = 'mongodb+srv://AdminUser:KDWYA5JA55iQkI1p@cluster0-y6kqz.mongodb.net/authapp?retryWrites=true&w=majority';
 
 // Mongoose's built in promise library is deprecated, replace it with ES2015 Promise
 mongoose.Promise = global.Promise;
@@ -35,7 +35,9 @@ app.use(session({
   secret: 'aaabbbccc',
   store: new MongoStore({
     url: MONGO_URI,
-    autoReconnect: true
+    autoReconnect: true,
+    username: 'AdminUser',
+  password: 'KDWYA5JA55iQkI1p'
   })
 }));
 

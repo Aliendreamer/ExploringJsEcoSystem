@@ -26,6 +26,7 @@ SongSchema.statics.addLyric = function(id, content) {
 }
 
 SongSchema.statics.findLyrics = function(id) {
+  
   return this.findById(id)
     .populate('lyrics')
     .then(song => song.lyrics);

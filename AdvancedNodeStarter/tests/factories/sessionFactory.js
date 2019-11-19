@@ -1,6 +1,7 @@
 const Keygrip = require("keygrip");
 const keys = require('../../config/keys');
-const Buffer = require('safe-buffer');
+const Buffer = require('safe-buffer').Buffer;
+const keyGrip = new Keygrip([keys.cookieKey]);
 
 module.exports = (user) =>{
     const sessionObj = {
@@ -8,10 +9,9 @@ module.exports = (user) =>{
             user: user._id.toString()
         }
     };
-    const session = Buffer.Buffer.from(JSON.stringify(sessionObj))
+    const session =  Buffer.from(JSON.stringify(sessionObj))
                                  .toString('base64');
  
-    const keyGrip = new Keygrip([keys.cookieKey]);
     const sig = keyGrip.sign('session='+session);
 
     return {session,sig};

@@ -82,8 +82,9 @@ describe("user not logged in ",async () => {
     })
 
     test("user cannot get blog list",async  () =>{
-        const result =await  page.evaluate(()=>{
-            return  fetch('/api/blogs',{
+        const result =await  page.evaluate(
+            ()=>{
+                return  fetch('/api/blogs',{
                 method:'GET',
                 credentials: 'same-origin',
                 headers: {                        

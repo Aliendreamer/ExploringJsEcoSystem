@@ -3,7 +3,7 @@ import React,{useState,useEffect} from 'react';
 
 const initialLocationState = {
   latitude: null,
-  longtitude: null,
+  longitude: null,
   speed: null
 }
 
@@ -35,7 +35,7 @@ const  App = () => {
     if (mounted) {
     setLocation({
       latitude: event.coords.latitude,
-      longtitude: event.coords.longtitude,
+      longitude: event.coords.longitude,
       speed: event.coords.speed
     })
   }

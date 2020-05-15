@@ -1,3 +1,4 @@
 https://scotch.io/tutorials/javascript-promises-for-dummies
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
 https://codeburst.io/playing-with-javascript-promises-a-comprehensive-approach-25ab752c78c3
+https://github.com/Aliendreamer/ExploringJsEcoSystem/tree/master/asyncawait - the code

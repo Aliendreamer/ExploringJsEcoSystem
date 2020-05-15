@@ -46,7 +46,7 @@ const promiseExampleFuncPending =()=>{
            if (isResolved) {
                const message ="first promise";
                console.log(message)
-             // resolve(message);
+               resolve(message);
            } else {
                const reason = new Error('failed promise');
                reject(reason);

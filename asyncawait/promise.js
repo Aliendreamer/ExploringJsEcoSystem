@@ -119,7 +119,29 @@ const funcPromiseOrder =()=>{
 
 } 
 
+
+
+const x =()=>{
+    const isResolved = false;
+    // Promise
+    return  new Promise(
+        (resolve, reject) => { 
+            if (isResolved) {
+                const message ="first promise";
+                console.log(message)
+                resolve(message);
+            } else {
+                const reason = new Error('failed promise');
+                reject(reason);
+            }
+    
+        }
+    );
+    
+}
+
 funcPromiseOrder()
+//x()
 //promiseExampleFunc();
 //promiseExampleFuncPending();
 //promiseExampleFuncRejected();

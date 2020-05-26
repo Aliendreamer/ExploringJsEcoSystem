@@ -13,17 +13,18 @@ const nestingPromises =()=>{
       .then(x=>nestedPromises(x))
       .then(x=>console.log(x))
 }
- //nestingPromises();
+ 
+nestingPromises();
 
-const doSomething=(x)=>{
-   const newX= x+1;
-   return Promise.resolve(newX);
-}
+// const doSomething=(x)=>{
+//    const newX= x+1;
+//    return Promise.resolve(newX);
+// }
 
- doSomething(0)
-  .then(x => {
-     doSomething(x)
-     .then(x=>{
-        doSomething(x).then(x=>console.log(x));
-     });
-  })
+//  doSomething(0)
+//   .then(x => {
+//      doSomething(x)
+//      .then(x=>{
+//         doSomething(x).then(x=>console.log(x));
+//      });
+//   })

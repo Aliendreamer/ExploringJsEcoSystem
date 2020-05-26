@@ -1,0 +1,6 @@
+https://www.apollographql.com/docs/tutorial/introduction/
+https://www.youtube.com/watch?v=LIaekiT6Ehs comparison rest graphql grpc
+https://www.youtube.com/watch?v=yLf0rIaRtRc graphql vs rest
+https://nordicapis.com/when-to-use-what-rest-graphql-webhooks-grpc/
+https://www.youtube.com/watch?v=783ccP__No8 graphql story
+https://medium.com/open-graphql/exploring-different-graphql-clients-d1bc69de305f graphql clients

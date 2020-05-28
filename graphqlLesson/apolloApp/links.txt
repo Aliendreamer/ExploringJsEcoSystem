@@ -9,13 +9,7 @@ https://medium.com/@galen.corey/understanding-apollo-fetch-policies-705b5ad71980
 https://www.youtube.com/watch?v=7wzR4Ig5pTI tutorial for graphql with spacex api
 https://www.apollographql.com/docs/apollo-server/api/apollo-server/ - constructor appolo client
 https://medium.com/the-graphqlhub/graphql-tour-interfaces-and-unions-7dd5be35de0d difference between union and interface
-
-
-// const isAuthenticated = (root, args, context, info) => {
-//    if (!context.user) {
-//      return new Error('Not authenticated')
-//    }
-//  }
+https://www.apollographql.com/docs/apollo-server/data/resolvers/ resolvers explanation
 
 
 

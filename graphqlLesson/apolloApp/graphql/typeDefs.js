@@ -50,7 +50,7 @@ const typeDefs = gql`
     }
    type Mutation{
       addBook(params: CreateBookInput):MutationResponse
-      addAuthor(name:String):MutationResponse
+      addAuthor(name:String):Author
       deleteBook(id:Int):MutationResponse
       deleteAuthor(id:Int):MutationResponse
    }

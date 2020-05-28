@@ -1,11 +1,11 @@
-import React from 'react';
-import { Table } from 'reactstrap';
+import React, { useState } from 'react';
+import { Table,Button } from 'reactstrap';
 import { useQuery } from '@apollo/react-hooks';
 import Loader from 'react-loader';
 import gql from 'graphql-tag';
 import {Link} from 'react-router-dom';
-
-const GET_Authors = gql`{
+import AddModal from "./addModal";
+export const GET_AUTHORS = gql`{
   authors{
     id
     name
@@ -24,8 +24,7 @@ const GET_Authors = gql`{
 
 
 const AuthorList = ()=>{
-   const { loading, error, data } = useQuery(GET_Authors);
-   debugger;
+   const { loading, error, data } = useQuery(GET_AUTHORS);
    let index=0;
    return (
     <>
@@ -57,8 +56,9 @@ const AuthorList = ()=>{
          </tbody>
        </Table>
    }
+    {<AddModal/>}
   </Loader>
-    </>
+  </>
   );
 }  
 

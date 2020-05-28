@@ -14,9 +14,23 @@ const resolvers = {
       },
       getAuthor:(obj, {id}, context, info)=>{
           const authorList = fs.readFileSync(path.resolve(__dirname,"../","db","authors.json"),'utf8');
-          const author = authorList.content.readFileSync(x=>x.id===id);  
+          const parsedAuthors = JSON.parse(authorList).content;
+          const author = parsedAuthors.find(x=>x.id===id);  
          return author;
       }
+    },
+    Mutation:{
+      addAuthor:(obj, {name}, context, info)=>{
+         const authorList = fs.readFileSync(path.resolve(__dirname,"../","db","authors.json"),'utf8');
+         const parsedAuthors = JSON.parse(authorList);
+         const newAuthor ={
+            name,
+            id:parsedAuthors.content.length+1
+         }
+         parsedAuthors.content.push(newAuthor);
+         fs.writeFileSync(path.resolve(__dirname,"../","db","authors.json"),JSON.stringify(parsedAuthors));
+         return newAuthor;
+     }
     },
     Author:{
       writings(author, args, context,info) {

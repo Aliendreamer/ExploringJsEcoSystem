@@ -4,9 +4,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const client = new ApolloClient({
-  uri: "[Insert URI of GraphQL endpoint]"
+  uri: "http://localhost:5000/graphql"
 });
 ReactDOM.render(
   <React.StrictMode>

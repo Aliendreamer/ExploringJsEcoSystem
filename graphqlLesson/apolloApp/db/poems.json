@@ -1,3 +1,7 @@
 {
-   "content":[]
+   "content":[
+      {"title":"Tom Bombadil","isPoem":true,"id":1,"author":1,"pages":200},
+      {"title":"Lutien and Beren","id":2,"author":1,"pages":500},
+      {"title":"Dreams","id":3,"author":2,"pages":300}
+   ]
 }

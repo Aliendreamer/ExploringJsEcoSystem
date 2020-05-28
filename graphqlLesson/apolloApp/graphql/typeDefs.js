@@ -2,15 +2,17 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
    # we are gonna define the types here
+   union Writings = Poem | Book
 
    type Book {
       id:Int
       title:String!
       author:Author
-      pages:Int!
+      pages:Int
    }
 
    type Poem {
+      isPoem:Boolean
       id:Int
       title:String!
       author:Author
@@ -21,16 +23,15 @@ const typeDefs = gql`
    # I am just using union this time I can do interface and to make it implimented in
    # both poem and book and it will be same result 
    # it can be seen by their props that interface can be lifted
-   union Writings = Poem || Book
 
    type Author{
       id:Int
       name:String!
-      Books:[Book]!
+      writings:[Writings]!
    }
 
    type Query {
-      books:[Books!]!
+      books:[Book!]!
       authors:[Author!]!
       getAuthor:Author
       getAuthorWorks:[Writings]!
@@ -49,11 +50,11 @@ const typeDefs = gql`
     }
    type Mutation{
       addBook(params: CreateBookInput):MutationResponse
-      addAuthor():MutationResponse
-      deleteBook():MutationResponse
-      deleteAuthor():MutationResponse
+      addAuthor(name:String):MutationResponse
+      deleteBook(id:Int):MutationResponse
+      deleteAuthor(id:Int):MutationResponse
    }
 `;
 
 
-export default typeDefs;
+module.exports = typeDefs;

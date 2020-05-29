@@ -5,7 +5,8 @@ const resolvers = {
    Query: {
       books: () => { 
          const books = fs.readFileSync(path.resolve(__dirname,"../","db","books.json"),'utf8');
-         return books.content;
+         const parsedBooks = JSON.parse(books);
+         return parsedBooks.content;
        },
       authors:()=>{
          const authorsJson  = fs.readFileSync(path.resolve(__dirname,"../","db","authors.json"),'utf8');
@@ -63,15 +64,15 @@ const resolvers = {
       author(book, args, context,info) {
          const authorsJson  = fs.readFileSync(path.resolve(__dirname,"../","db","authors.json"),'utf8');
          const parsedAuthors = JSON.parse(authorsJson).content;
-         const author = parsedAuthors.filter(a=>a.id === book.author);
+         const author = parsedAuthors.find(a=>a.id === book.author);
          return author;
       }
     },
     Poem:{
-      author(book, args, context,info) {
+      author(poem, args, context,info) {
          const authorsJson  = fs.readFileSync(path.resolve(__dirname,"../","db","authors.json"),'utf8');
          const parsedAuthors = JSON.parse(authorsJson).content;
-         const author = parsedAuthors.filter(a=>a.id === book.author);
+         const author = parsedAuthors.find(a=>a.id === poem.author);
          return author;
       }
     }

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Table,Button } from 'reactstrap';
+import { Table,Button,Alert } from 'reactstrap';
 import { useQuery,useMutation } from '@apollo/react-hooks';
 import Loader from 'react-loader';
 import gql from 'graphql-tag';
-import {Link} from 'react-router-dom';
+import {Link,useHistory} from 'react-router-dom';
 import AddModal from "./addModal";
+import BaseAlert from './baseAlert';
 export const GET_AUTHORS = gql`{
   authors{
     id
@@ -32,12 +33,17 @@ const DELETE_AUTHOR=gql`
 `;
 const AuthorList = ()=>{
    const { loading, error, data } = useQuery(GET_AUTHORS, {fetchPolicy: 'network-only'});
-
+   const history = useHistory();
    const [ deleteAuthor,{ loading: mutationLoading, error: mutationError }] = useMutation(DELETE_AUTHOR);
-
-
+   const [openAlert,setOpenAlert]= useState(false);
+   const [deleteSuccess,setDeleteSuccess] = useState(false);
   const deleteAction= async (id)=>{
-    await deleteAuthor({variables:{id},refetchQueries:[{query:GET_AUTHORS}],awaitRefetchQueries:true})
+    const result = await deleteAuthor({variables:{id},refetchQueries:[{query:GET_AUTHORS}],awaitRefetchQueries:true});
+    setOpenAlert(true);
+    setDeleteSuccess(result.data.deleteAuthor.success);
+    setTimeout(()=>{
+      setOpenAlert(false)
+    },3000);
   }
 
 
@@ -81,6 +87,8 @@ const AuthorList = ()=>{
        </Table>
    }
     {<AddModal/>}
+    <Button onClick={()=>history.push("/books")}>Go to books</Button>
+    {<BaseAlert open={openAlert} success={deleteSuccess}/>}
   </Loader>
   </>
   );

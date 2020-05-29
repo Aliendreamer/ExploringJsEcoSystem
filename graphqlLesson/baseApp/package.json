@@ -4,7 +4,7 @@
   "description": "Learning graphql test course app",
   "main": "index.js",
   "scripts": {
-    "json:server": "json-server --watch db.json",
+    "json-server": "json-server --watch db.json",
     "dev":"nodemon server.js"
   },
   "license": "MIT",

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table,Button } from 'reactstrap';
 import { useQuery,useMutation } from '@apollo/react-hooks';
 import Loader from 'react-loader';
@@ -32,19 +32,21 @@ const DELETE_AUTHOR=gql`
 }
 `;
 const AuthorList = ()=>{
-   const { loading, error, data } = useQuery(GET_AUTHORS, {fetchPolicy: 'network-only'});
-   const history = useHistory();
-   const [ deleteAuthor,{ loading: mutationLoading }] = useMutation(DELETE_AUTHOR);
-   const [openAlert,setOpenAlert]= useState(false);
-   const [deleteSuccess,setDeleteSuccess] = useState(false);
+  const { loading, error, data } = useQuery(GET_AUTHORS, {fetchPolicy: 'cache-and-network'});
+  const history = useHistory();
+  const [ deleteAuthor,{ loading: mutationLoading }] = useMutation(DELETE_AUTHOR);
+  const [openAlert,setOpenAlert]= useState(false);
+  const [deleteSuccess,setDeleteSuccess] = useState(false);
   const deleteAction= async (id)=>{
-    const result = await deleteAuthor({variables:{id},refetchQueries:[{query:GET_AUTHORS}],awaitRefetchQueries:true});
+    const result = await deleteAuthor({variables:{id}});
     setOpenAlert(true);
     setDeleteSuccess(result.data.deleteAuthor.success);
     setTimeout(()=>{
       setOpenAlert(false)
+      window.location.reload();
     },3000);
   }
+ 
 
    let index=0;
    return (

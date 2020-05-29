@@ -11,7 +11,7 @@ https://www.apollographql.com/docs/apollo-server/api/apollo-server/ - constructo
 https://medium.com/the-graphqlhub/graphql-tour-interfaces-and-unions-7dd5be35de0d difference between union and interface
 https://www.apollographql.com/docs/apollo-server/data/resolvers/ resolvers explanation
 
-
+https://github.com/Aliendreamer/ExploringJsEcoSystem/tree/master/graphqlLesson the code from lecture
 
 Resolvers in GraphQL can return different kinds of results which are treated differently:
 

@@ -30,7 +30,15 @@ const resolvers = {
          parsedAuthors.content.push(newAuthor);
          fs.writeFileSync(path.resolve(__dirname,"../","db","authors.json"),JSON.stringify(parsedAuthors));
          return newAuthor;
-     }
+     },
+     deleteAuthor:(obj, {id}, context, info)=>{
+      const authorList = fs.readFileSync(path.resolve(__dirname,"../","db","authors.json"),'utf8');
+      const parsedAuthors = JSON.parse(authorList);
+      const updatedAuthors = parsedAuthors.content.filter(a=>a.id!==id);
+      parsedAuthors.content= updatedAuthors;
+      fs.writeFileSync(path.resolve(__dirname,"../","db","authors.json"),JSON.stringify(parsedAuthors));
+      return {success:true,message:"Deleted author"};
+  }
     },
     Author:{
       writings(author, args, context,info) {

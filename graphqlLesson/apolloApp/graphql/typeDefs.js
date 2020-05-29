@@ -20,14 +20,14 @@ const typeDefs = gql`
    }
 
    #this can be union or interface there is no major difference 
-   # I am just using union this time I can do interface and to make it implimented in
+   # I am just using union this time I can do interface and to make it implemented in
    # both poem and book and it will be same result 
    # it can be seen by their props that interface can be lifted
 
    type Author{
       id:Int
       name:String!
-      writings:[Writings]!
+      writings:[Writings]
    }
 
    type Query {
@@ -46,7 +46,7 @@ const typeDefs = gql`
    # creating custom response type
    type MutationResponse {
       success: Boolean!
-      message: String!
+      message: String
     }
    type Mutation{
       addBook(params: CreateBookInput):MutationResponse

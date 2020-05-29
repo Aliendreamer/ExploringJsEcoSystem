@@ -41,10 +41,10 @@ const AddModal = (props) => {
       }
    );
     
-    const onAdd = ()=>{
-       const id = addAuthor({variables:{authorName}});
+    const onAdd = async()=>{
+       const response=  await addAuthor({variables:{name:authorName}});
        debugger;
-       history.push(`/author/${id}`);
+       history.push(`/author/${response.data.addAuthor.id}`);
      } 
 
   return (

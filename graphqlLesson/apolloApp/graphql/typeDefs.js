@@ -16,7 +16,7 @@ const typeDefs = gql`
       id:Int
       title:String!
       author:Author
-      pages:Int!
+      pages:Int
    }
 
    #this can be union or interface there is no major difference 
@@ -33,7 +33,7 @@ const typeDefs = gql`
    type Query {
       books:[Book!]!
       authors:[Author!]!
-      getAuthor:Author
+      getAuthor(id:Int):Author
       getAuthorWorks:[Writings]!
    }
 
@@ -41,7 +41,7 @@ const typeDefs = gql`
    input CreateBookInput {
       title: String!
       author: String!
-      pages: Int!
+      pages: Int
    }
    # creating custom response type
    type MutationResponse {

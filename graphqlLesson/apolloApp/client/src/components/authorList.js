@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Table,Button,Alert } from 'reactstrap';
+import React, { useState } from 'react';
+import { Table,Button } from 'reactstrap';
 import { useQuery,useMutation } from '@apollo/react-hooks';
 import Loader from 'react-loader';
 import gql from 'graphql-tag';
@@ -34,7 +34,7 @@ const DELETE_AUTHOR=gql`
 const AuthorList = ()=>{
    const { loading, error, data } = useQuery(GET_AUTHORS, {fetchPolicy: 'network-only'});
    const history = useHistory();
-   const [ deleteAuthor,{ loading: mutationLoading, error: mutationError }] = useMutation(DELETE_AUTHOR);
+   const [ deleteAuthor,{ loading: mutationLoading }] = useMutation(DELETE_AUTHOR);
    const [openAlert,setOpenAlert]= useState(false);
    const [deleteSuccess,setDeleteSuccess] = useState(false);
   const deleteAction= async (id)=>{
@@ -45,11 +45,6 @@ const AuthorList = ()=>{
       setOpenAlert(false)
     },3000);
   }
-
-
-    useEffect(()=>{
-
-    });
 
    let index=0;
    return (

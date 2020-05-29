@@ -18,7 +18,7 @@ function App() {
         <Route path="/Books">
           <BookList/>
         </Route>
-        <Route path="/author/{id}">
+        <Route exact path="/author/:id">
           <AuthorDetail/>
         </Route>
       </Switch>

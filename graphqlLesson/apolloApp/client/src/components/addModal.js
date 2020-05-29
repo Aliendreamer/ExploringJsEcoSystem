@@ -29,21 +29,20 @@ const AddModal = (props) => {
 
 
    const [addAuthor] = useMutation(
-      CREATE_AUTHOR,
-      {
-        update(cache, { data: { addAuthor } }) {
-          const { authors } = cache.readQuery({ query: GET_AUTHORS });
-          cache.writeQuery({
-            query: GET_AUTHORS,
-            data: { authors: authors.concat([addAuthor]) },
-          });
-        }
-      }
+      CREATE_AUTHOR
+      // {
+      //   // update(cache, { data: { addAuthor } }) {
+      //   //   const { authors } = cache.readQuery({ query: GET_AUTHORS });
+      //   //   cache.writeQuery({
+      //   //     query: GET_AUTHORS,
+      //   //     data: { authors: authors.concat([addAuthor]) },
+      //   //   });
+      //   // }
+      // }
    );
     
     const onAdd = async()=>{
-       const response=  await addAuthor({variables:{name:authorName}});
-       debugger;
+       const response=  await addAuthor({ refetchQueries:[{query:GET_AUTHORS}],variables:{name:authorName}});
        history.push(`/author/${response.data.addAuthor.id}`);
      } 
 

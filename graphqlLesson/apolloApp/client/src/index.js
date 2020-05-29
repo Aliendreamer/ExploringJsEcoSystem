@@ -5,9 +5,31 @@ import * as serviceWorker from './serviceWorker';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { InMemoryCache, IntrospectionFragmentMatcher } from "apollo-cache-inmemory";
 
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData: {
+    __schema: {
+      types: [
+        {
+          "kind": "UNION",
+          "name": "Writings",
+          "possibleTypes": [
+            {
+              "name": "Poem"
+            },
+            {
+              "name": "Book"
+            }
+          ]
+        },
+      ],
+    },
+  }
+});
 const client = new ApolloClient({
-  uri: "http://localhost:5000/graphql"
+  uri: "http://localhost:5000/graphql",
+  cache:new InMemoryCache({ fragmentMatcher })
 });
 ReactDOM.render(
   <React.StrictMode>

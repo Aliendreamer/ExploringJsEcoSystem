@@ -13,12 +13,4 @@ https://www.apollographql.com/docs/apollo-server/data/resolvers/ resolvers expla
 
 https://github.com/Aliendreamer/ExploringJsEcoSystem/tree/master/graphqlLesson the code from lecture
 
-Resolvers in GraphQL can return different kinds of results which are treated differently:
-
-null or undefined - this indicates the object could not be found. If your schema says that field is nullable, then the result will have a null value at that position. If the field is non-null, the result will "bubble up" to the nearest nullable field and that result will be set to null. This is to ensure that the API consumer never gets a null value when they were expecting a result.
-An array - this is only valid if the schema indicates that the result of a field should be a list. The sub-selection of the query will run once for every item in this array.
-A promise - resolvers often do asynchronous actions like fetching from a database or backend API, so they can return promises. This can be combined with arrays, so a resolver can return:
-
-A promise that resolves an array
-An array of promises
-A scalar or object value - a resolver can also return any other kind of value, which doesn't have any special meaning but is simply passed down into any nested resolvers, as described in the next section.
+https://www.evernote.com/shard/s441/sh/ef3d1934-9ae5-e116-78e2-76c7b7d3a575/817c342c6c78bd403d2b65808b5da513 - shortlist how to run mutations/queries in graphiql and against a server tehre is some small differences

@@ -4,7 +4,7 @@ const typeDefs = gql`
    # we are gonna define the types here
    union Writings = Poem | Book
 
-   type Book {
+   type Book{
       id:Int
       title:String!
       author:Author

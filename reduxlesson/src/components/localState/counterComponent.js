@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 
-const CounterComponent = ()=>{
+const CounterComponentLocal = ()=>{
 
    const [fieldValue,setFieldValue]=useState(0);
    useEffect(()=>{
@@ -20,4 +20,4 @@ const CounterComponent = ()=>{
       
 }
 
-export default CounterComponent;
+export default CounterComponentLocal;

@@ -8,10 +8,10 @@ import {Provider as ProviderTwo} from './components/advancedContextExample/Conte
 import CounterComponent from "./components/advancedContextExample/CounterComponentAdvanced";
 //uncomment if you are trying the props drilling example or reading point 2 of the article
 //and pass it to the app
-//import ComponentOne from "./components/propsDrilling/componentOne";
+import ComponentOne from "./components/propsDrilling/componentOne";
 
 //uncomment if you are trying local state example or reading point 3 of the article
-//import CounterComponent from "./components/localState/counterComponent";
+import CounterComponentLocal from "./components/localState/counterComponent";
 
 //uncomment if you are trying point 1 2 or 3 from the article or
 //any of the non redux examples.
@@ -25,7 +25,7 @@ import CounterComponent from "./components/advancedContextExample/CounterCompone
 //     </div>
 //     </CounterProvider>
 //   );
-// }
+// // }
 // const baseStateReducer = combineReducers({
 //     countState:CounterReducer
 // })
@@ -42,7 +42,7 @@ import CounterComponent from "./components/advancedContextExample/CounterCompone
 // }
 
 
-// Advanced redux example 
+//Advanced redux example 
 function App() {
   return (
     <ProviderTwo>

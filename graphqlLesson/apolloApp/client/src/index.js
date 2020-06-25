@@ -6,6 +6,8 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { InMemoryCache, IntrospectionFragmentMatcher } from "apollo-cache-inmemory";
+import {setContext} from "apollo-link-context";
+import {createHttpLink} from "apollo-link-http";
 
 const fragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData: {
@@ -27,7 +29,20 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
     },
   }
 });
+const httpLink = createHttpLink({
+  uri:"/graphql"
+})
+const authLink = (_,{headers}) =>{
+  const token = localStorage.getItem("token");
+  return {
+    headers:{
+      ...headers,
+      authorization:token ?`Bearer ${token}`:""
+    }
+  }
+}
 const client = new ApolloClient({
+  link:authLink.concat(httpLink),
   uri: "http://localhost:5000/graphql",
   cache:new InMemoryCache({ fragmentMatcher })
 });

@@ -5,22 +5,13 @@
    "version": "0.2.0",
    "configurations": [
       {
-         "type": "node",
+         "type": "pwa-node",
          "request": "launch",
-         "name": "Launch",
-         "cwd": "${workspaceFolder}",
-         "runtimeExecutable": null,
-         "args": [],
-         "stopOnEntry": false,
-         "runtimeArgs": [ "--nolazy" ],
-         "preLaunchTask": null,
-         "env": {
-           "NODE_ENV": "development",
-           "LOG_LEVEL": "debug"
-         },
-         "console": "internalConsole",
-         "program": "${workspaceFolder}/index.js",
-         "outFiles": []
-       },
-  ]
+         "name": "Launch Program",
+         "skipFiles": [
+            "<node_internals>/**"
+         ],
+         "program": "${workspaceFolder}/index.js"
+      }
+   ]
 }

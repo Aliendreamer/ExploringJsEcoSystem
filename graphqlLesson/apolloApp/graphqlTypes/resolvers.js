@@ -7,7 +7,7 @@ const fs_readFile = util.promisify(fs.readFile)
 const resolvers = {
    //we are gonna define the resolvers here
    Query: {
-      books: async () => { 
+      books: async () => {
          const books = await fs_readFile(path.resolve(__dirname,"../","db","books.json"),'utf8');
          const parsedBooks = JSON.parse(books);
          return parsedBooks.content;
@@ -20,12 +20,14 @@ const resolvers = {
       getAuthor:async(obj, {id}, context, info)=>{
           const authorList = await fs_readFile(path.resolve(__dirname,"../","db","authors.json"),'utf8');
           const parsedAuthors = JSON.parse(authorList).content;
-          const author = parsedAuthors.find(x=>x.id===id);  
+          const author = parsedAuthors.find(x=>x.id===id);
          return author;
       }
     },
     Mutation:{
       addAuthor:async(obj, {name}, context, info)=>{
+         const a = context;
+         console.log(context);
          const authorList =await fs_readFile(path.resolve(__dirname,"../","db","authors.json"),'utf8');
          const parsedAuthors = JSON.parse(authorList);
          const newAuthor ={

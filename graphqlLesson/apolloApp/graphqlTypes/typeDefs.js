@@ -1,6 +1,6 @@
 const { gql } = require('apollo-server');
 
-const typeDefs = gql`
+const typeDefs =`
    # we are gonna define the types here
    union Writings = Poem | Book
 
@@ -19,9 +19,9 @@ const typeDefs = gql`
       pages:Int
    }
 
-   #this can be union or interface there is no major difference 
+   #this can be union or interface there is no major difference
    # I am just using union this time I can do interface and to make it implemented in
-   # both poem and book and it will be same result 
+   # both poem and book and it will be same result
    # it can be seen by their props that interface can be lifted
 
    type Author{

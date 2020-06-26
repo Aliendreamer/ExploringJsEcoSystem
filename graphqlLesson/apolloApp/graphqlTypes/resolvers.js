@@ -15,9 +15,9 @@ const resolvers = {
        }),
       authors: async (obj, args, context, info)=>{
          const a = context;
-         const user = context.kauth.accessToken.content // get the user details from the access token
+         const user = context.kauth.accessToken.content
+         console.log(user);// get the user details from the access token
          console.log(context.kauth.accessToken)
-         console.log(context);
          const authorsJson  = await fs_readFile(path.resolve(__dirname,"../","db","authors.json"),'utf8');
          const parsedAuthors = JSON.parse(authorsJson).content;
          return parsedAuthors;
@@ -30,13 +30,13 @@ const resolvers = {
       }
     },
     Mutation:{
-      addAuthor:hasRole("canPublish")(async(obj, {name}, context, info)=>{
+      addAuthor:hasRole('canPublish')(async(obj, {name}, context, info)=>{
          const a = context;
          const user = context.kauth.accessToken.content // get the user details from the access token
          console.log(context.kauth.accessToken)
          console.log(context);
          const authorList =await fs_readFile(path.resolve(__dirname,"../","db","authors.json"),'utf8');
-         const parsedAuthors = JSON.parse(authorList);s
+         const parsedAuthors = JSON.parse(authorList);
          const newAuthor ={
             name,
             id:parsedAuthors.content.length+1
@@ -45,7 +45,7 @@ const resolvers = {
         await fs_writeFile(path.resolve(__dirname,"../","db","authors.json"),JSON.stringify(parsedAuthors));
          return newAuthor;
      }),
-     deleteAuthor:hasRole("canAdd")(async (obj, {id}, context, info)=>{
+     deleteAuthor:hasRole('canDelete')(async (obj, {id}, context, info)=>{
       const a = context;
       const user = context.kauth.accessToken.content // get the user details from the access token
       console.log(context.kauth.accessToken)

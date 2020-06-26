@@ -32,13 +32,12 @@ app.use(graphqlPath, keycloak.middleware());
 
 app.use(
 	`${graphqlPath}`,
-	expressGraphQL({
+	expressGraphQL((req)=>({
 		graphiql: true,
 		schema: schema,
-		context:({req})=>{
-			return {
-				kauth:new KeycloakContext({req})
-			}
+		pretty:true,
+		context:{
+			kauth :new KeycloakContext({req})
 		},
 		customFormatErrorFn: error => {
 			const formattedError = {
@@ -51,7 +50,7 @@ app.use(
 			console.error(`GraphQL returning error: ${JSON.stringify(formattedError, null, "\t")}.`);
 			return formattedError;
 		}
-	})
+	}))
 );
 
 const PORT = 5500;

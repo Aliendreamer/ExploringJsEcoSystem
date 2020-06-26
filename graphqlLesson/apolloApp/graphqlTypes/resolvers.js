@@ -3,16 +3,21 @@ const path = require("path");
 const util = require('util')
 const fs_writeFile = util.promisify(fs.writeFile)
 const fs_readFile = util.promisify(fs.readFile)
+const { auth, hasRole } = require('keycloak-connect-graphql')
 
 const resolvers = {
    //we are gonna define the resolvers here
    Query: {
-      books: async () => {
+      books: auth( async () => {
          const books = await fs_readFile(path.resolve(__dirname,"../","db","books.json"),'utf8');
          const parsedBooks = JSON.parse(books);
          return parsedBooks.content;
-       },
-      authors: async ()=>{
+       }),
+      authors: async (obj, args, context, info)=>{
+         const a = context;
+         const user = context.kauth.accessToken.content // get the user details from the access token
+         console.log(context.kauth.accessToken)
+         console.log(context);
          const authorsJson  = await fs_readFile(path.resolve(__dirname,"../","db","authors.json"),'utf8');
          const parsedAuthors = JSON.parse(authorsJson).content;
          return parsedAuthors;
@@ -25,11 +30,13 @@ const resolvers = {
       }
     },
     Mutation:{
-      addAuthor:async(obj, {name}, context, info)=>{
+      addAuthor:hasRole("canPublish")(async(obj, {name}, context, info)=>{
          const a = context;
+         const user = context.kauth.accessToken.content // get the user details from the access token
+         console.log(context.kauth.accessToken)
          console.log(context);
          const authorList =await fs_readFile(path.resolve(__dirname,"../","db","authors.json"),'utf8');
-         const parsedAuthors = JSON.parse(authorList);
+         const parsedAuthors = JSON.parse(authorList);s
          const newAuthor ={
             name,
             id:parsedAuthors.content.length+1
@@ -37,15 +44,19 @@ const resolvers = {
          parsedAuthors.content.push(newAuthor);
         await fs_writeFile(path.resolve(__dirname,"../","db","authors.json"),JSON.stringify(parsedAuthors));
          return newAuthor;
-     },
-     deleteAuthor:async (obj, {id}, context, info)=>{
+     }),
+     deleteAuthor:hasRole("canAdd")(async (obj, {id}, context, info)=>{
+      const a = context;
+      const user = context.kauth.accessToken.content // get the user details from the access token
+      console.log(context.kauth.accessToken)
+      console.log(context);
       const authorList = await fs_readFile(path.resolve(__dirname,"../","db","authors.json"),'utf8');
       const parsedAuthors = JSON.parse(authorList);
       const updatedAuthors = parsedAuthors.content.filter(a=>a.id!==id);
       parsedAuthors.content= updatedAuthors;
      await fs_writeFile(path.resolve(__dirname,"../","db","authors.json"),JSON.stringify(parsedAuthors));
       return {success:true,message:"Deleted author"};
-  }
+  })
     },
     Author:{
       async writings(author, args, context,info) {

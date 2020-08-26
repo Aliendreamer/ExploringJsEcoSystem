@@ -20,6 +20,7 @@ describe("interact actions",()=>{
    it("load url",()=>{
       cy.visit("http://books.toscrape.com/index.html")
       cy.url().should("include","index.html")
+      cy.log("loaded")
    })
    it("should click button",()=>{
      cy.get("a").contains("Travel").click()

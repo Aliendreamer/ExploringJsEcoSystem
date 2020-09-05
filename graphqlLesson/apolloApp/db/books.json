@@ -1,0 +1,15 @@
+{
+   "content":[
+      {"title":"Lord of the rings","id":1,"author":1,"pages":1000},
+      {"title":"Bilbo Begins","id":2,"author":1,"pages":400},
+      {"title":"Silmarilion","id":1,"author":1,"pages":1200},
+      {"title":"Clash of kings","id":4,"author":2,"pages":1000},
+      {"title":"Warriors","id":5,"author":2,"pages":500},
+      {"title":"House of the worm","id":6,"author":2,"pages":300},
+      {"title":"Night of knives","id":7,"author":3,"pages":1000},
+      {"title":"StoneWilder","id":8,"author":3,"pages":1000},
+      {"title":"Book of dead","id":9,"author":3,"pages":2000}
+
+   ]
+}
+

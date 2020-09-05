@@ -1,0 +1,16 @@
+https://www.apollographql.com/docs/tutorial/introduction/
+https://www.youtube.com/watch?v=LIaekiT6Ehs comparison rest graphql grpc
+https://www.youtube.com/watch?v=yLf0rIaRtRc graphql vs rest
+https://nordicapis.com/when-to-use-what-rest-graphql-webhooks-grpc/
+https://www.youtube.com/watch?v=783ccP__No8 graphql story
+https://medium.com/open-graphql/exploring-different-graphql-clients-d1bc69de305f graphql clients
+https://raw.githubusercontent.com/sogko/graphql-shorthand-notation-cheat-sheet/master/graphql-shorthand-notation-cheat-sheet.png - cheat sheet for graphql
+https://medium.com/@galen.corey/understanding-apollo-fetch-policies-705b5ad71980 - fetch policies
+https://www.youtube.com/watch?v=7wzR4Ig5pTI tutorial for graphql with spacex api
+https://www.apollographql.com/docs/apollo-server/api/apollo-server/ - constructor appolo client
+https://medium.com/the-graphqlhub/graphql-tour-interfaces-and-unions-7dd5be35de0d difference between union and interface
+https://www.apollographql.com/docs/apollo-server/data/resolvers/ resolvers explanation
+
+https://github.com/Aliendreamer/ExploringJsEcoSystem/tree/master/graphqlLesson the code from lecture
+
+https://www.evernote.com/shard/s441/sh/ef3d1934-9ae5-e116-78e2-76c7b7d3a575/817c342c6c78bd403d2b65808b5da513 - shortlist how to run mutations/queries in graphiql and against a server tehre is some small differences

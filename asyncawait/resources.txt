@@ -1,0 +1,8 @@
+https://scotch.io/tutorials/javascript-promises-for-dummies
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+https://codeburst.io/playing-with-javascript-promises-a-comprehensive-approach-25ab752c78c3
+https://promisesaplus.com/ - thenable explanation
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve - then explanation
+https://stackoverflow.com/questions/53894038/whats-the-difference-between-resolvethenable-and-resolvenon-thenable-object
+https://web.dev/promises/ - promises in details
+https://github.com/Aliendreamer/ExploringJsEcoSystem/tree/master/asyncawait - the code

@@ -1,0 +1,8 @@
+https://blog.isquaredsoftware.com/2020/01/blogged-answers-react-redux-and-context-behavior/
+https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/
+https://egghead.io/courses/getting-started-with-redux
+https://github.com/zalmoxisus/redux-devtools-extension
+https://react-redux.js.org/
+https://blog.isquaredsoftware.com/2018/11/react-redux-history-implementation/
+https://www.youtube.com/watch?v=mtjHxwUQUs0&feature=youtu.be&t=3240 - why redux is not dead
+https://www.youtube.com/watch?v=ewelU8WHXQ4

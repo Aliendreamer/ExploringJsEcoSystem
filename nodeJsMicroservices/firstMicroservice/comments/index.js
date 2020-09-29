@@ -5,7 +5,6 @@ const cors = require('cors');
 const app =express();
 app.use(bodyParser.json());
 app.use(cors());
-app.options('*', cors());
 
 const commentsByPostId={};
 app.get('/posts/:id/comments',(req,res)=>{

@@ -1,15 +1,5 @@
-import React,{useState,useEffect} from "react";
-import axios from "axios";
-export default ({postId})=>{
-   const [comments,setComments]=useState([]);
-   useEffect(()=>{
-        (async()=>{
-           const res = await axios.get(`http://localhost:4001/posts/${postId}/comments`);
-           setComments(res.data);
-         })()
-   })
-
-
+import React from "react";
+export default ({comments})=>{
    return(
          <ul>
         {comments.map(c=> <li key={c.id}>{c.content}</li>)}

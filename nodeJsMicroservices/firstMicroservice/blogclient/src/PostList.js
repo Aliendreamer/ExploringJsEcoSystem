@@ -8,7 +8,7 @@ export default ({refresh,setRefresh})=>{
 
    useEffect(()=>{
       (async()=>{
-         const res = await axios.get("http://localhost:4000/posts")
+         const res = await axios.get("http://localhost:4002/posts")
          setPosts(res.data);
          setRefresh(false);
       })()
@@ -17,9 +17,9 @@ export default ({refresh,setRefresh})=>{
       return( <div className="card" style={{width:"30%",marginBottom:"20px"}} key={post.id}>
             <div className="card-body">
             <h3>{post.title}</h3>
-            <CommentList postId={post.id}/>
+            <CommentList comments={post.comments}/>
             <hr/>
-            <CommentCreate postId={post.id}/>
+            <CommentCreate postId={post.id}  setRefresh={setRefresh}/>
             </div>
       </div>)
    });

@@ -18,7 +18,7 @@ app.post("/posts/:id/comments", async (req,res)=>{
    const comments = commentsByPostId[req.params.id]||[];
    comments.push({id,content,status:"pending"});
    commentsByPostId[req.params.id]=comments;
-   await axios.post("http://localhost:4005/events",{type:"CommentCreated",data:{id,content,postId:req.params.id,status:"pending"}})
+   await axios.post("http://event-bus-srv:4005/events",{type:"CommentCreated",data:{id,content,postId:req.params.id,status:"pending"}})
    res.send(201).send(comments);
 });
 
@@ -31,7 +31,7 @@ app.post("/events",async(req,res)=>{
          const comment = comments.find(x=>x.id===id);
          comment.status=status;
          comment.content=content;
-         await axios.post("http://localhost:4005/events",{type:"CommentUpdated",data:{id,postId,content,status}});
+         await axios.post("http://еvent-bus-srv:4005/events",{type:"CommentUpdated",data:{id,postId,content,status}});
    }
    res.send({});
 });

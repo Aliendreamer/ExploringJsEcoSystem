@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blogclient-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blogclient
+  template:
+    metadata:
+      labels:
+        app: blogclient
+    spec:
+      containers:
+        - name: blogclient
+          image: aliendreamer/blogclient
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blogclient-srv
+spec:
+  selector:
+    app: blogclient
+  type: ClusterIP
+  ports:
+    - name: blogclient
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

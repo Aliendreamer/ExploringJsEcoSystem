@@ -1,0 +1,58 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+    kubectl:
+      manifests:
+          - ./infrastructure/k8s/*
+build:
+   local:
+      push: false
+   artifacts:
+      - image: aliendreamer/blogclient
+        context: blogclient
+        docker:
+            dockerfile: Dockerfile
+        sync:
+          manual:
+            - src: "src/**/*.js"
+              dest: .
+      - image: aliendreamer/comments
+        context: comments
+        docker:
+            dockerfile: Dockerfile
+        sync:
+          manual:
+            - src: "*.js"
+              dest: .
+      - image: aliendreamer/queries
+        context: queries
+        docker:
+            dockerfile: Dockerfile
+        sync:
+          manual:
+            - src: "*.js"
+              dest: .
+      - image: aliendreamer/posts
+        context: posts
+        docker:
+            dockerfile: Dockerfile
+        sync:
+          manual:
+            - src: "*.js"
+              dest: .
+      - image: aliendreamer/event-bus
+        context: event-bus
+        docker:
+            dockerfile: Dockerfile
+        sync:
+          manual:
+            - src: "*.js"
+              dest: .
+      - image: aliendreamer/moderation
+        context: moderation
+        docker:
+            dockerfile: Dockerfile
+        sync:
+          manual:
+            - src: "*.js"
+              dest: .

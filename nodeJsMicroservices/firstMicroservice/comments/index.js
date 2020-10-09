@@ -19,7 +19,7 @@ app.post("/posts/:id/comments", async (req,res)=>{
    comments.push({id,content,status:"pending"});
    commentsByPostId[req.params.id]=comments;
    await axios.post("http://event-bus-srv:4005/events",{type:"CommentCreated",data:{id,content,postId:req.params.id,status:"pending"}})
-   res.send(201).send(comments);
+   res.status(201).send(comments);
 });
 
 app.post("/events",async(req,res)=>{
@@ -33,7 +33,7 @@ app.post("/events",async(req,res)=>{
          comment.content=content;
          await axios.post("http://event-bus-srv:4005/events",{type:"CommentUpdated",data:{id,postId,content,status}});
    }
-   res.sendStatus(200);
+   res.send({status:'ok'});
 });
 app.listen(4001,()=>{
    console.log("listening on 4001");

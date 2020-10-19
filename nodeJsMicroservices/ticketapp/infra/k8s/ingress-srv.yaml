@@ -5,6 +5,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
    rules:
      - host: tickets.dev
@@ -13,4 +14,4 @@ spec:
            - path: /api/users/?(.*)
              backend:
                 serviceName: auth-srv
-                servicePort: 4000
+                servicePort: 3000

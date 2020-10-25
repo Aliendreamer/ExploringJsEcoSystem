@@ -15,7 +15,7 @@ app.use(json());
 app.set("trust-proxy",true);
 app.use(cookieSession({
    signed:false,
-   secure:true
+   secure:false
 }))
 app.use(signInRouter);
 app.use(signUpRouter);

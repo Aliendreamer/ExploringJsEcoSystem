@@ -5,7 +5,6 @@ import  express,{Request,Response} from "express";
 import {body } from "express-validator";
 import { User } from '../models/user';
 import jwt from "jsonwebtoken";
-
 const router = express.Router();
 
 router.post("/api/users/signin" ,[

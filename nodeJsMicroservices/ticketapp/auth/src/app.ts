@@ -14,7 +14,9 @@ app.use(json());
 app.set("trust-proxy",true);
 app.use(cookieSession({
    signed:false,
-   secure:process.env.NODE_ENV !== "test"
+   // this should be done like this but I have problems with ssl
+   //secure:process.env.NODE_EN !== "test"
+   secure: false
 }))
 app.use(signInRouter);
 app.use(signUpRouter);

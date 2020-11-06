@@ -5,7 +5,7 @@ export default ()=>{
    const [email,setEmail] = useState("");
    const [password,setPassword] = useState("");
    const {doRequest,errors} = useRequest({
-      url:"/api/users/signup",
+      url:"/api/users/signin",
       method:"post",
       body:{email,password},
       onSuccess:() =>  Router.push("/")
@@ -26,7 +26,7 @@ export default ()=>{
          <input className="form-control" type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
          </div>
          {errors}
-         <button className="btn btn-primary">Sign Up</button>
+         <button className="btn btn-primary">Sign In</button>
       </form>
    )
 }

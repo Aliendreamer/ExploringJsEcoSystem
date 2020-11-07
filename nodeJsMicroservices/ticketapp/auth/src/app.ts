@@ -1,5 +1,4 @@
-import { NotFoundError } from './errors/notFoundError';
-import { erroHandler } from './middlewares/errorHandler';
+import { erroHandler,NotFoundError } from '@ticketstest/common';
 import express from "express";
 import "express-async-errors";
 import {json} from "body-parser";

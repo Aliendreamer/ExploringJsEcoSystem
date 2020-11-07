@@ -1,6 +1,5 @@
 import { Password } from '../services/password';
-import { BadRequestError } from './../errors/badRequestError';
-import {validateRequestHandler}  from "../middlewares/validateRequest";
+import {validateRequestHandler,BadRequestError}  from "@ticketstest/common";
 import  express,{Request,Response} from "express";
 import {body } from "express-validator";
 import { User } from '../models/user';

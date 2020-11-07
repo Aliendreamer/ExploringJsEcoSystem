@@ -1,5 +1,4 @@
-import { BadRequestError } from './../errors/badRequestError';
-import {validateRequestHandler}  from "../middlewares/validateRequest";
+import {validateRequestHandler,BadRequestError}  from "@ticketstest/common";
 import jwt from "jsonwebtoken";
 import  express,{Request,Response} from "express";
 import {body} from "express-validator";

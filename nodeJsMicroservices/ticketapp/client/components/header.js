@@ -8,8 +8,11 @@ export default ({currentUser})=>{
    ].filter(linkConfig =>linkConfig)
       .map(({label,href})=> {
          return <li key={href} className="nav-item">
-            <Link href={href} key={href}> </Link>
-            {label}
+            <Link href={href} key={href}>
+              <a className="nav-link">
+                 {label}
+              </a>
+            </Link>
          </li>
    })
 
@@ -19,7 +22,7 @@ export default ({currentUser})=>{
       </Link>
       <div className="d-flex justify-content-end">
          <ul className="nav d-flx align-items-center">
-
+         {links}
          </ul>
       </div>
    </nav>)

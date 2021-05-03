@@ -32,34 +32,30 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 });
 
 const keycloak = Keycloak({
-	realm: "testRealm",
-  url: "http://localhost:8080/auth",
-  redirectUrl:"http://localhost:3000",
-	clientId: "test-react",
-	"bearer-only": true,
-	"ssl-required": "none",
-  resource: "test-react",
+  "realm": "testRealm",
+  "url": "http://localhost:4001/auth/",
+  "ssl-required": "none",
+  "resource": "test-react",
   "public-client": true,
-  "confidential-port": 0
+  "confidential-port": 0,
+  "clientId":"test-react"
 });
 const httpLink = createHttpLink({
-  uri:"http://localhost:5500/graphql",
-  useGETForQueries:true,
-  // includeQuery: false,
-  // includeExtensions:false,
-  // fetchOptions: {
-  //   mode: 'no-cors'
-  // },
+  //useGETForQueries:true,
+  uri: "http://localhost:5500/graphql",
+  credentials:"include",
+  fetchOptions:{
+    mode:"no-cors"
+  }
 })
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem('token');
   // return the headers to the context so httpLink can read them
-  debugger;
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : "",
+      Authorization: token ? `Bearer ${token}` : "",
     }
   }
 });

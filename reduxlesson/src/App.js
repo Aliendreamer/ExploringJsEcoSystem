@@ -15,17 +15,19 @@ import CounterComponentLocal from "./components/localState/counterComponent";
 
 //uncomment if you are trying point 1 2 or 3 from the article or
 //any of the non redux examples.
-// import {CounterProvider} from "./components/usingContextApi/CounterContext";
-// import CounterComponentWithContext from './components/usingContextApi/CounterComponentWithContext';
+import {CounterProvider} from "./components/usingContextApi/CounterContext";
+import CounterComponentWithContext from './components/usingContextApi/CounterComponentWithContext';
 // function App() {
 //   return (
 //     <CounterProvider>
 //       <div >
+//         {/* <ComponentOne/> */}
+//         {/* <CounterComponentLocal/> */}
 //      <CounterComponentWithContext/>
 //     </div>
 //     </CounterProvider>
 //   );
-// // }
+// }
 // const baseStateReducer = combineReducers({
 //     countState:CounterReducer
 // })
@@ -42,7 +44,7 @@ import CounterComponentLocal from "./components/localState/counterComponent";
 // }
 
 
-//Advanced redux example 
+//Advanced redux example
 function App() {
   return (
     <ProviderTwo>

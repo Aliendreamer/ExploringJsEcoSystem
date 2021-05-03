@@ -1,5 +1,5 @@
 {
-  "name": "GraphQlApp",
+  "name": "graphqlapp",
   "version": "0.0.1",
   "description": "Learning graphql test course app",
   "main": "index.js",

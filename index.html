@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" title="test">
+<body>
+
+
+  <input type="text" id="field" name="field" value="">
+  <br><br>
+ <div>
+	<p>current time spent</p>
+  <p id="time"/>
+  <br><br>
+  <p>current clicks</p>
+  <p id="clicks"/>
+  <br><br>
+  <p>current symbols total</p>
+  <p id="symbolsTotal"/>
+  <br><br>
+  <p>current symbols</p>
+  <p id="symbols"/>
+</div>
+  <input type="button" value="click me">
+</body>
+<script>
+ let start=null
+ let count =0;
+ let symbolsArray =[];
+ setInterval(()=>{
+	const timeField =document.getElementById("time");
+	const symbols =document.getElementById("symbols");
+	const clicks =document.getElementById("clicks");
+	const symbolsTotal =document.getElementById("symbolsTotal");
+	 const current = new Date();
+	 timeField.textContent= (current - start)/1000;
+	 symbols.textContent =[...new Set(symbolsArray)].join();
+	 clicks.textContent=count;
+	 symbolsTotal.textContent=symbolsArray.length;
+ },1000)
+ const input =document.getElementById("field");
+ input.addEventListener("keydown",(event)=>{
+	count++;
+	symbolsArray.push(event.key);
+ })
+window.addEventListener("load", (event) => {
+ start = new Date();
+ const timeField =document.getElementById("time");
+ timeField.textContent= 0;
+});
+window.addEventListener("click",(event)=>{
+	count++;
+})
+
+</script>
+</html>

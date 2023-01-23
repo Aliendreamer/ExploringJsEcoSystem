@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" title="test">
 <body>
-
-
   <input type="text" id="field" name="field" value="">
   <br><br>
- <div>
+ <div id="results" hidden>
 	<p>current time spent</p>
   <p id="time"/>
   <br><br>
@@ -18,12 +16,12 @@
   <p>current symbols</p>
   <p id="symbols"/>
 </div>
-  <input type="button" value="click me">
+  <input type="button" value="click me" onclick="results()">
 </body>
 <script>
  let start=null
  let count =0;
- let symbolsArray =[];
+ const symbolsArray =[];
  setInterval(()=>{
 	const timeField =document.getElementById("time");
 	const symbols =document.getElementById("symbols");
@@ -39,7 +37,13 @@
  input.addEventListener("keydown",(event)=>{
 	count++;
 	symbolsArray.push(event.key);
- })
+ });
+
+ function results(){
+	const resultsDiv =document.getElementById("results");
+	resultsDiv.removeAttribute("hidden");
+ }
+
 window.addEventListener("load", (event) => {
  start = new Date();
  const timeField =document.getElementById("time");

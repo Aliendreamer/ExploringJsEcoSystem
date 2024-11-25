@@ -8,13 +8,10 @@
 			"type": "node",
 			"request": "launch",
 			"name": "file launch",
-			"args": [
-				"223232"
-			],
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "${workspaceFolder}/turndownParsing/parsing.js"
+			"program": "${workspaceFolder}/test.js"
 		},
 		{
 			"type": "node",

@@ -1,5 +1,5 @@
-const Namespace = require('../classes/Namespace');
-const Room = require('../classes/Room');
+import { Namespace } from '../classes/Namespace.js';
+import { Room } from "../classes/Room.js";
 
 const wikiNs = new Namespace(0,'Wikipedia','https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/103px-Wikipedia-logo-v2.svg.png','/wiki');
 const mozNs = new Namespace(1,'Mozilla','https://www.mozilla.org/media/img/logos/firefox/logo-quantum.9c5e96634f92.png','/mozilla')
@@ -21,4 +21,4 @@ linuxNs.addRoom(new Room(3,'Mac OS',2))
 
 const namespaces = [wikiNs,mozNs,linuxNs];
 
-module.exports = namespaces;
+export default namespaces;

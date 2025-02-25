@@ -1,4 +1,4 @@
-class Room{
+export class Room{
     constructor(roomId,roomTitle,namespaceId,privateRoom = false){
         this.roomId = roomId;
         this.roomTitle = roomTitle;
@@ -15,5 +15,3 @@ class Room{
         this.history = [];
     }
 }
-
-module.exports = Room;

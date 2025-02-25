@@ -1,4 +1,4 @@
-class Namespace{
+export class Namespace{
 
     constructor(id,name,image,endpoint){
         this.id = id;
@@ -13,5 +13,3 @@ class Namespace{
     }
 
 }
-
-module.exports = Namespace;

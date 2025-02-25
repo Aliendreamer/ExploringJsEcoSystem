@@ -9,7 +9,7 @@
 const userName = "Rob";
 const password = "x";
 
-const socket = io('http://localhost:9000');
+const socket = io('http://localhost:3000');
 
 socket.on('connect',()=>{
     console.log("Connected!");

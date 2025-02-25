@@ -16,11 +16,7 @@ const clientOptions = {
 }
 
 //always join the main namespace, because that's where the client gets the other namespaces from
-const socket = io('http://localhost:9000',clientOptions);
-// const socket2 = io('http://localhost:9000/wiki');
-// const socket3 = io('http://localhost:9000/mozilla');
-// const socket4 = io('http://localhost:9000/linux');
-
+const socket = io('http://localhost:3000',clientOptions);
 //sockets will be put into this array, in the index of their ns.id
 const nameSpaceSockets = [];
 const listeners = {
@@ -94,7 +90,7 @@ socket.on('nsList',(nsData)=>{
         if(!nameSpaceSockets[ns.id]){
             //There is no socket at this nsId. So make a new connection!
             //join this namespace with io()
-            nameSpaceSockets[ns.id] = io(`http://localhost:9000${ns.endpoint}`);
+            nameSpaceSockets[ns.id] = io(`http://localhost:3000${ns.endpoint}`);
         }
         addListeners(ns.id);
 
